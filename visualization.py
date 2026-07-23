@@ -24,3 +24,15 @@ for i in range(trades):
 
 print(f"Загальний прибуток/збиток: ${total_profit}")
 
+plt.figure(figsize=(14, 6))
+plt.plot(data.index, data["Close"], label="Ціна закриття", color="gray")
+plt.plot(data.index, data["MA20"], label="MA20", color="blue")
+plt.plot(data.index, data["MA50"], label="MA50", color="red")
+plt.scatter(buys.index, buys["Close"], marker="^", color="green", s=100, label="Купівля")
+plt.scatter(sells.index, sells["Close"], marker="v", color="red", s=100, label="Продаж")
+plt.title("Стратегія перетину ковзних середніх")
+plt.xlabel("Дата")
+plt.ylabel("Ціна, $")
+plt.grid(True)
+plt.legend()
+plt.show()
